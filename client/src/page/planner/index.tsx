@@ -1,16 +1,14 @@
 import React from "react";
 
 import * as S from "./styles";
-import { useMain } from "./hooks";
+import { usePlanner } from "./hooks";
 import Modal from "../../component/modal";
 import Layout from "../../component/layout";
 import { useUser } from "../../context/user";
-import { Stage, Sprite } from "@inlet/react-pixi";
-import { Rectangle } from "../../graphic/rectangular";
 
-const Main: React.FC = () => {
+const Planner: React.FC = () => {
   const user = useUser();
-  const {} = useMain();
+  const {} = usePlanner();
 
   return (
     <>
@@ -18,15 +16,11 @@ const Main: React.FC = () => {
         <S.SideBar>
           <S.SideBarContainer></S.SideBarContainer>
         </S.SideBar>
-        <S.Main>
-          <Stage>
-            <Rectangle x={0} y={0} width={800} height={600} color={0xff0000}></Rectangle>
-          </Stage>
-        </S.Main>
+        <S.Planner></S.Planner>
       </Layout>
       <Modal />
     </>
   );
 };
 
-export default Main;
+export default Planner;
