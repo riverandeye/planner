@@ -14,7 +14,7 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
 
-  border-bottom: 1px solid #bbbbbb;
+  border-bottom: 1px solid rgb(222, 222, 222);
 `;
 
 export const HeaderContainer = styled.div``;
