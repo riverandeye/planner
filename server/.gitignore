@@ -596,3 +596,5 @@ $RECYCLE.BIN/
 .DS_Store
 
 /conf
+
+config/config.yml
