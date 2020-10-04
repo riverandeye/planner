@@ -3,7 +3,7 @@ import { BREAKPOINT, Flex_Center_Center, Flex_Row_Start_Center } from "../../con
 
 export const SideBar = styled.div`
   display: none;
-  width: 30rem;
+  width: 35rem;
 
   height: 100%;
   border-right: 1px solid rgb(222, 222, 222);
@@ -48,24 +48,30 @@ export const PlanLevelMeta = styled.div`
 `;
 
 export const PlanBoxes = styled.div`
-  width: 100%;
+  width: 50vw;
   height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  @media only screen and (min-width: ${BREAKPOINT}px) {
+    width: 25rem;
+    display: block;
+  }
 `;
 
 export const PlanBox = styled.div`
-  width: 23rem;
+  width: 100%;
   height: 4rem;
 
   margin: 1rem 0rem 2rem;
 
   font-size: 1.4rem;
 
-  border: 1px solid rgb(222, 222, 222);
+  border-top: 1px solid rgb(222, 222, 222);
+  border-bottom: 1px solid rgb(222, 222, 222);
 
   display: flex;
   justify-content: flex-start;
