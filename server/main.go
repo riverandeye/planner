@@ -7,9 +7,6 @@ import (
 )
 
 func main() {
-
 	r := router.Router()
-
 	r.Run(":" + config.Server.HTTPPort)
-
 }

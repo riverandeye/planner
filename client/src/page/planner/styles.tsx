@@ -1,24 +1,32 @@
 import styled from "styled-components/macro";
-import { Flex_Center_Center, Flex_Row_Start_Center } from "../../constant";
-import { getRandomHexColor } from "../../lib/color";
+import { BREAKPOINT, Flex_Center_Center, Flex_Row_Start_Center } from "../../constant";
 
 export const SideBar = styled.div`
+  display: none;
   width: 30rem;
 
   height: 100%;
   border-right: 1px solid rgb(222, 222, 222);
+
+  @media only screen and (min-width: ${BREAKPOINT}px) {
+    display: block;
+  }
 `;
 
 export const SideBarContainer = styled.div``;
 
 export const Planner = styled.div`
-  width: calc(100% - 30rem);
+  width: 100%;
   height: 100%;
 
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: scroll;
+
+  @media only screen and (min-width: ${BREAKPOINT}px) {
+    width: calc(100% - 30rem);
+  }
 `;
 
 export const PlanLevel = styled.div`

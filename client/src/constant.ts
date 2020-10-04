@@ -10,3 +10,5 @@ export const Flex_Row_Start_Center = `
   justify-content:flex-start;
   align-items:center;
 `;
+
+export const BREAKPOINT = 500;
