@@ -9,11 +9,29 @@ export const SideBar = styled.div`
   border-right: 1px solid rgb(222, 222, 222);
 
   @media only screen and (min-width: ${BREAKPOINT}px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-export const SideBarContainer = styled.div``;
+export const SideBarContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+
+export const SideBarBlock = styled.div`
+  display: flex;
+  justify-content: flex-start;
+
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+`;
 
 export const Planner = styled.div`
   width: 100%;
@@ -75,6 +93,23 @@ export const PlanBox = styled.div`
 
   display: flex;
   justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+`;
+
+export const AddRootPlan = styled.button`
+  width: 100%;
+  height: 4rem;
+  font-size: 1.8rem;
+  border: none;
+  outline: none;
+
+  ${Flex_Center_Center}
+
+  &:hover {
+    background-color: #3dfe22;
+    transition: 0.3s;
+  }
 `;
 
 export const PlanBoxLabel = styled.div`
@@ -86,7 +121,7 @@ export const PlanBoxLabel = styled.div`
 `;
 
 export const PlanBoxContent = styled.div`
-  width: 100%;
+  width: 21rem;
   height: 100%;
 
   padding-left: 1rem;

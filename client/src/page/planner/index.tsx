@@ -6,6 +6,7 @@ import Modal from "../../component/modal";
 import Layout from "../../component/layout";
 import { useUser } from "../../context/user";
 import { getRandomHexColor } from "../../lib/color";
+import SideBarGoal from "../../component/sidebar-goal";
 
 const Planner: React.FC = () => {
   const user = useUser();
@@ -15,7 +16,7 @@ const Planner: React.FC = () => {
     <>
       <Layout>
         <S.SideBar>
-          <S.SideBarContainer></S.SideBarContainer>
+          <SideBarGoal />
         </S.SideBar>
         <S.Planner>
           <S.PlanLevel>
@@ -27,9 +28,9 @@ const Planner: React.FC = () => {
                 <S.PlanBoxLabel>1</S.PlanBoxLabel>
                 <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
               </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
+              <S.AddRootPlan>
+                <div>+</div>
+              </S.AddRootPlan>
             </S.PlanBoxes>
           </S.PlanLevel>
           <S.PlanLevel>

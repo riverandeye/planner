@@ -11,4 +11,11 @@ export const Flex_Row_Start_Center = `
   align-items:center;
 `;
 
+export const Flex_Column_Start_Center = `
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+`;
+
 export const BREAKPOINT = 500;
