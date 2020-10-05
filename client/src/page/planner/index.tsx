@@ -10,7 +10,7 @@ import SideBarGoal from "../../component/sidebar-goal";
 
 const Planner: React.FC = () => {
   const user = useUser();
-  const {} = usePlanner();
+  const { planTree, onClickPlan } = usePlanner();
 
   return (
     <>
@@ -19,104 +19,21 @@ const Planner: React.FC = () => {
           <SideBarGoal />
         </S.SideBar>
         <S.Planner>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.AddRootPlan>
-                <div>+</div>
-              </S.AddRootPlan>
-            </S.PlanBoxes>
-          </S.PlanLevel>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-            </S.PlanBoxes>
-          </S.PlanLevel>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-            </S.PlanBoxes>
-          </S.PlanLevel>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-            </S.PlanBoxes>
-          </S.PlanLevel>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-            </S.PlanBoxes>
-          </S.PlanLevel>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-            </S.PlanBoxes>
-          </S.PlanLevel>
-          <S.PlanLevel>
-            <S.PlanLevelMeta
-              style={{ backgroundColor: `#${getRandomHexColor()}` }}
-            ></S.PlanLevelMeta>
-            <S.PlanBoxes>
-              <S.PlanBox>
-                <S.PlanBoxLabel>1</S.PlanBoxLabel>
-                <S.PlanBoxContent>가르치는 사람 되기</S.PlanBoxContent>
-              </S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-              <S.PlanBox></S.PlanBox>
-            </S.PlanBoxes>
-          </S.PlanLevel>
+          {planTree.map((plans, plansIdx) => (
+            <S.PlanLevel key={plansIdx}>
+              <S.PlanLevelMeta
+                style={{ backgroundColor: `#${getRandomHexColor()}` }}
+              ></S.PlanLevelMeta>
+              <S.PlanBoxes>
+                {plans.map((plan, planIdx) => (
+                  <S.PlanBox key={planIdx} onClick={onClickPlan(plan.id)}>
+                    <S.PlanBoxLabel>{planIdx}</S.PlanBoxLabel>
+                    <S.PlanBoxContent>{plan.title}</S.PlanBoxContent>
+                  </S.PlanBox>
+                ))}
+              </S.PlanBoxes>
+            </S.PlanLevel>
+          ))}
         </S.Planner>
       </Layout>
       <Modal />
