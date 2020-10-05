@@ -13,6 +13,12 @@ func GetGoals(c *gin.Context) {
 	c.JSON(200, goals)
 }
 
+func GetRootGoals(c *gin.Context) {
+	goals := service.GetRootGoals()
+
+	c.JSON(200, goals)
+}
+
 func GetGoal(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 
@@ -21,6 +27,19 @@ func GetGoal(c *gin.Context) {
 	}
 
 	goal := service.GetGoal(id)
+
+	c.JSON(200, goal)
+}
+
+func GetChildrenGoals(c *gin.Context) {
+
+	id, err := strconv.Atoi(c.Param("id"))
+
+	if err != nil {
+		panic(err)
+	}
+
+	goal := service.GetChildrens(id)
 
 	c.JSON(200, goal)
 }

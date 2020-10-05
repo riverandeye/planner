@@ -15,17 +15,12 @@ func Router() *gin.Engine {
 
 	// Goal Routes
 	api.GET("/goal", controller.GetGoals)
+	api.GET("/rootgoal", controller.GetRootGoals)
 	api.GET("/goal/:id", controller.GetGoal)
-	api.POST("/goal/:id", controller.CreateGoal)
+	api.GET("/goal/:id/children", controller.GetChildrenGoals)
+	api.POST("/goal", controller.CreateGoal)
 	api.PUT("/goal/:id", controller.UpdateGoal)
 	api.DELETE("/goal/:id", controller.DeleteGoal)
-
-	// Plan Routes
-	api.GET("/plan", controller.GetPlans)
-	api.GET("/plan/:id", controller.GetPlan)
-	api.POST("/plan/:id", controller.CreatePlan)
-	api.PUT("/plan/:id", controller.UpdatePlan)
-	api.DELETE("/plan/:id", controller.DeletePlan)
 
 	return router
 }

@@ -2,12 +2,21 @@ package model
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/riverandeye/planner/server/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
+// Model For Database
+type Model struct {
+	ID        uint      `gorm:"primarykey" json:"id"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
+}
+
+// DBConn is connection object
 var (
 	DBConn *gorm.DB
 )
@@ -28,6 +37,5 @@ func init() {
 		panic(err)
 	}
 
-	// TODO : Develop 일 때만으로 업데이트해야함
-	DBConn.AutoMigrate(&Goal{}, &Plan{})
+	DBConn.AutoMigrate(&Goal{})
 }

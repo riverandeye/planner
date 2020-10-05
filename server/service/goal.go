@@ -17,8 +17,23 @@ func GetGoal(id int) model.Goal {
 	return goal
 }
 
+func GetRootGoals() []model.Goal {
+	var goals []model.Goal
+
+	model.DBConn.Where("parent_id", nil).Find(&goals)
+
+	return goals
+}
+
+func GetChildrens(id int) []model.Goal {
+	var goals []model.Goal
+	model.DBConn.Where("parent_id", id).Find(&goals)
+
+	return goals
+}
+
 func CreateGoal() {
-	goal := model.Goal{Title: "hello", Content: "Yello", Accomplished: false}
+	goal := model.Goal{Title: "hello", Content: "Yello", Accomplished: false, ParentID: 5}
 
 	result := model.DBConn.Create(&goal)
 
