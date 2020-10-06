@@ -4,6 +4,7 @@ import { Id에해당하는Plan을갖고있는배열의인덱스를반환한다 }
 import Plan from "../../model/plan";
 
 export const usePlanner = () => {
+  const [clickedHistory, setClickedHistory] = useState([]);
   const [planTree, setPlanTree] = useState([] as Plan[][]);
 
   useEffect(() => {
@@ -14,19 +15,24 @@ export const usePlanner = () => {
 
   const onClickPlan = useCallback(
     (id: number) => async () => {
+      if (clickedHistory.includes(id)) return;
+      console.log("requested");
+
       const idx = Id에해당하는Plan을갖고있는배열의인덱스를반환한다(id, planTree);
-      console.log(idx);
+      setPlanTree([...planTree.slice(0, idx + 1)]);
+      setClickedHistory([...clickedHistory.slice(0, idx), id]);
 
       const children = await getChildrenPlans(id);
       if (!children.length) return;
 
-      setPlanTree([...planTree, children]);
+      setPlanTree([...planTree.slice(0, idx + 1), children]);
     },
-    [planTree],
+    [planTree, clickedHistory],
   );
 
   return {
     planTree,
     onClickPlan,
+    clickedHistory,
   };
 };

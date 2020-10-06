@@ -10,7 +10,7 @@ import SideBarGoal from "../../component/sidebar-goal";
 
 const Planner: React.FC = () => {
   const user = useUser();
-  const { planTree, onClickPlan } = usePlanner();
+  const { planTree, onClickPlan, clickedHistory } = usePlanner();
 
   return (
     <>
@@ -26,7 +26,11 @@ const Planner: React.FC = () => {
               ></S.PlanLevelMeta>
               <S.PlanBoxes>
                 {plans.map((plan, planIdx) => (
-                  <S.PlanBox key={planIdx} onClick={onClickPlan(plan.id)}>
+                  <S.PlanBox
+                    active={clickedHistory.includes(plan.id)}
+                    key={planIdx}
+                    onClick={onClickPlan(plan.id)}
+                  >
                     <S.PlanBoxLabel>{planIdx + 1}</S.PlanBoxLabel>
                     <S.PlanBoxContent>{plan.title}</S.PlanBoxContent>
                   </S.PlanBox>

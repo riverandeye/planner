@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import { fadeIn } from "../../animation/keyframe";
 import { BREAKPOINT, Flex_Center_Center, Flex_Row_Start_Center } from "../../constant";
+import Active from "../../interface/active";
 
 export const SideBar = styled.div`
   display: none;
@@ -83,7 +84,7 @@ export const PlanBoxes = styled.div`
   }
 `;
 
-export const PlanBox = styled.div`
+export const PlanBox = styled.div<Active>`
   width: 100%;
   height: 4rem;
 
@@ -98,6 +99,10 @@ export const PlanBox = styled.div`
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: hidden;
+
+  /* border-left: ${(p) => (p.active ? `1px solid rgb(222, 222, 222)` : "none")}; */
+  border-right: ${(p) => (p.active ? `1px solid rgb(222, 222, 222)` : "none")};
+  background-color: ${(p) => (p.active ? `rgb(245, 245, 245)` : "inherit")};
 `;
 
 export const AddRootPlan = styled.button`
