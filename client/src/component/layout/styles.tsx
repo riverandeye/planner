@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Hide_Scrollbar } from "../../constant";
 
 export const Layout = styled.div`
   display: flex;
@@ -15,4 +16,6 @@ export const Content = styled.div`
   display: flex;
   flex-wrap: nowrap;
   overflow: scroll;
+
+  ${Hide_Scrollbar}
 `;

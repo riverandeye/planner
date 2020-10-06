@@ -6,17 +6,29 @@ import Modal from "../../component/modal";
 import Layout from "../../component/layout";
 import { useUser } from "../../context/user";
 import { getRandomHexColor } from "../../lib/color";
-import SideBarGoal from "../../component/sidebar-goal";
+import SideBarPlan from "../../component/sidebar-plan";
 
 const Planner: React.FC = () => {
   const user = useUser();
-  const { planTree, onClickPlan, clickedHistory } = usePlanner();
+  const {
+    newPlan,
+    planTree,
+    onClickPlan,
+    currentPlan,
+    createNewPlan,
+    updateNewPlan,
+    clickedHistory,
+    deleteSelectedPlan,
+    hideCreatePlanModal,
+    showCreatePlanModal,
+    onClickCreatePlanButton,
+  } = usePlanner();
 
   return (
     <>
       <Layout>
         <S.SideBar>
-          <SideBarGoal />
+          <SideBarPlan plan={currentPlan} deletePlan={deleteSelectedPlan} />
         </S.SideBar>
         <S.Planner>
           {planTree.map((plans, plansIdx) => (
@@ -35,12 +47,30 @@ const Planner: React.FC = () => {
                     <S.PlanBoxContent>{plan.title}</S.PlanBoxContent>
                   </S.PlanBox>
                 ))}
+                <S.AddPlan onClick={onClickCreatePlanButton(plansIdx)}>+</S.AddPlan>
               </S.PlanBoxes>
             </S.PlanLevel>
           ))}
         </S.Planner>
       </Layout>
-      <Modal />
+      <Modal show={showCreatePlanModal} toggleModal={hideCreatePlanModal}>
+        <S.CreatePlanModal>
+          <S.CreatePlanTitle>목표 추가하기</S.CreatePlanTitle>
+          <S.CreatePlanDescription>
+            소중한 목표를 세우고 <br />
+            한발짝 한발짝 나아가세요.
+          </S.CreatePlanDescription>
+          <S.CreatePlanElement>
+            <S.CreatePlanLabel>목표</S.CreatePlanLabel>
+            <S.CreatePlanInput value={newPlan.title} onChange={updateNewPlan("title")} />
+          </S.CreatePlanElement>
+          <S.CreatePlanElement>
+            <S.CreatePlanLabel>설명</S.CreatePlanLabel>
+            <S.CreatePlanTextarea value={newPlan.content} onChange={updateNewPlan("content")} />
+          </S.CreatePlanElement>
+          <S.CreatePlanButton onClick={createNewPlan}>생성하기</S.CreatePlanButton>
+        </S.CreatePlanModal>
+      </Modal>
     </>
   );
 };

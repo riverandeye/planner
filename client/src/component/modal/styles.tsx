@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeIn } from "../../animation/keyframe";
 
 interface ModalProps {
   show?: boolean;
@@ -17,6 +18,8 @@ export const Modal = styled.div<ModalProps>`
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   justify-content: center;
   align-items: center;
+
+  animation: ${fadeIn} 1s linear;
 `;
 
 export const Container = styled.div`

@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     margin: 0;
-    user-select : none;
   }
   button {
     cursor: pointer;

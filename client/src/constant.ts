@@ -18,4 +18,13 @@ export const Flex_Column_Start_Center = `
   align-items:center;
 `;
 
+/*FireFox*/
+/*IE10+*/
+/*Chrome, Safari, Edge*/
+export const Hide_Scrollbar = `
+  scrollbar-width: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  &::-webkit-scrollbar { display: none; }
+  `;
+
 export const BREAKPOINT = 500;
