@@ -27,7 +27,7 @@ const Planner: React.FC = () => {
               <S.PlanBoxes>
                 {plans.map((plan, planIdx) => (
                   <S.PlanBox key={planIdx} onClick={onClickPlan(plan.id)}>
-                    <S.PlanBoxLabel>{planIdx}</S.PlanBoxLabel>
+                    <S.PlanBoxLabel>{planIdx + 1}</S.PlanBoxLabel>
                     <S.PlanBoxContent>{plan.title}</S.PlanBoxContent>
                   </S.PlanBox>
                 ))}

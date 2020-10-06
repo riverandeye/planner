@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { fadeIn } from "../../animation/keyframe";
 import { BREAKPOINT, Flex_Center_Center, Flex_Row_Start_Center } from "../../constant";
 
 export const SideBar = styled.div`
@@ -56,6 +57,8 @@ export const PlanLevel = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  animation: ${fadeIn} 1s linear;
 `;
 
 export const PlanLevelMeta = styled.div`
