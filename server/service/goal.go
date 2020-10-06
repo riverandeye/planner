@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/riverandeye/planner/server/model"
+	"gorm.io/gorm"
 )
 
 func GetGoals() []model.Goal {
@@ -32,10 +33,14 @@ func GetChildrens(id int) []model.Goal {
 	return goals
 }
 
-func CreateGoal() {
-	goal := model.Goal{Title: "hello", Content: "Yello", Accomplished: false, ParentID: 5}
+func CreateGoal(newGoal model.Goal) {
 
-	result := model.DBConn.Create(&goal)
+	var result *gorm.DB
+	if newGoal.ParentID == 0 {
+		result = model.DBConn.Select("created_at", "updated_at", "title", "content", "accomplished").Create(&newGoal)
+	} else {
+		result = model.DBConn.Select("created_at", "updated_at", "title", "content", "accomplished", "parent_id").Create(&newGoal)
+	}
 
 	if result.Error != nil {
 		panic(result.Error)

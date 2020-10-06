@@ -1,9 +1,11 @@
 package controller
 
 import (
+	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/riverandeye/planner/server/model"
 	"github.com/riverandeye/planner/server/service"
 )
 
@@ -14,6 +16,7 @@ func GetGoals(c *gin.Context) {
 }
 
 func GetRootGoals(c *gin.Context) {
+
 	goals := service.GetRootGoals()
 
 	c.JSON(200, goals)
@@ -45,7 +48,13 @@ func GetChildrenGoals(c *gin.Context) {
 }
 
 func CreateGoal(c *gin.Context) {
-	service.CreateGoal()
+	var newGoal model.Goal
+	if err := c.ShouldBindJSON(&newGoal); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	service.CreateGoal(newGoal)
 
 	c.JSON(200, gin.H{"result": "Success"})
 }

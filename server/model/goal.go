@@ -3,8 +3,8 @@ package model
 // Goal Model
 type Goal struct {
 	Model
-	Title        string `json:"title"`
-	Content      string `json:"content"`
+	Title        string `json:"title" binding:"required"`
+	Content      string `json:"content" binding:"required"`
 	Accomplished bool   `json:"accomplished"`
 	ParentID     uint   `json:"parentId"`
 	Parent       *Goal  `json:"parent"`
