@@ -12,7 +12,7 @@ import Active from "../../interface/active";
 
 export const SideBar = styled.div`
   display: none;
-  width: 25%;
+  width: 25rem;
 
   height: 100%;
   border-right: 1px solid rgb(222, 222, 222);
@@ -43,8 +43,8 @@ export const SideBarBlock = styled.div`
 `;
 
 export const Planner = styled.div`
+  width: 100%;
   height: 100%;
-  position: relative;
 
   display: flex;
   justify-content: flex-start;
@@ -54,7 +54,7 @@ export const Planner = styled.div`
   ${Hide_Scrollbar}
 
   @media only screen and (min-width: ${BREAKPOINT}px) {
-    width: calc(100% - 35rem);
+    width: calc(100% - 25rem);
     position: relative;
   }
 `;
