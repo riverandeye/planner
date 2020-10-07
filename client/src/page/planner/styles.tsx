@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import { fadeIn } from "../../animation/keyframe";
+
 import {
   BREAKPOINT,
   Flex_Center_Center,
@@ -11,7 +12,7 @@ import Active from "../../interface/active";
 
 export const SideBar = styled.div`
   display: none;
-  width: 35rem;
+  width: 25%;
 
   height: 100%;
   border-right: 1px solid rgb(222, 222, 222);
@@ -42,8 +43,8 @@ export const SideBarBlock = styled.div`
 `;
 
 export const Planner = styled.div`
-  width: 100%;
   height: 100%;
+  position: relative;
 
   display: flex;
   justify-content: flex-start;
@@ -53,7 +54,8 @@ export const Planner = styled.div`
   ${Hide_Scrollbar}
 
   @media only screen and (min-width: ${BREAKPOINT}px) {
-    width: calc(100% - 30rem);
+    width: calc(100% - 35rem);
+    position: relative;
   }
 `;
 
@@ -78,7 +80,7 @@ export const PlanLevelMeta = styled.div`
   height: 6rem;
 
   border-bottom: 1px solid rgb(222, 222, 222);
-  transition: 1s;
+  transition: 0.3s;
 `;
 
 export const PlanBoxes = styled.div`

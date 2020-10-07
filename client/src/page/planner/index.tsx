@@ -1,7 +1,7 @@
 import React from "react";
 
 import * as S from "./styles";
-import { usePlanner } from "./hooks";
+import { useLogin, usePlanner } from "./hooks";
 import Modal from "../../component/modal";
 import Layout from "../../component/layout";
 import { useUser } from "../../context/user";
@@ -23,6 +23,8 @@ const Planner: React.FC = () => {
     showCreatePlanModal,
     onClickCreatePlanButton,
   } = usePlanner();
+
+  const { setId, setPw, onClickLogin, showLoginModal } = useLogin();
 
   return (
     <>
@@ -69,6 +71,23 @@ const Planner: React.FC = () => {
             <S.CreatePlanTextarea value={newPlan.content} onChange={updateNewPlan("content")} />
           </S.CreatePlanElement>
           <S.CreatePlanButton onClick={createNewPlan}>생성하기</S.CreatePlanButton>
+        </S.CreatePlanModal>
+      </Modal>
+      <Modal show={showLoginModal} toggleModal={() => {}}>
+        <S.CreatePlanModal>
+          <S.CreatePlanTitle>로그인을 해주세요</S.CreatePlanTitle>
+          <S.CreatePlanDescription>
+            여러분의 소중한 꿈들을 <br />이 플래너에 담아보세요
+          </S.CreatePlanDescription>
+          <S.CreatePlanElement>
+            <S.CreatePlanLabel>아이디</S.CreatePlanLabel>
+            <S.CreatePlanInput onChange={(e) => setId(e.target.value)} />
+          </S.CreatePlanElement>
+          <S.CreatePlanElement>
+            <S.CreatePlanLabel>비밀번호</S.CreatePlanLabel>
+            <S.CreatePlanInput onChange={(e) => setPw(e.target.value)} />
+          </S.CreatePlanElement>
+          <S.CreatePlanButton onClick={onClickLogin}>생성하기</S.CreatePlanButton>
         </S.CreatePlanModal>
       </Modal>
     </>

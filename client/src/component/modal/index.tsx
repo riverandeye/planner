@@ -6,10 +6,11 @@ class ModalProps {
   children?: React.ReactNode;
   show?: boolean = true;
   toggleModal?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  partial?: boolean;
 }
 
-const Modal: React.FunctionComponent<ModalProps> = ({ children, show, toggleModal }) => (
-  <S.Modal show={show} onClick={toggleModal}>
+const Modal: React.FunctionComponent<ModalProps> = ({ children, show, toggleModal, partial }) => (
+  <S.Modal show={show} onClick={toggleModal} partial={partial}>
     <S.Container onClick={(e) => e.stopPropagation()}>{children}</S.Container>
   </S.Modal>
 );

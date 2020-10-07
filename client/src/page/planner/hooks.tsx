@@ -140,3 +140,27 @@ export const usePlanner = () => {
     onClickCreatePlanButton,
   };
 };
+
+export const useLogin = () => {
+  const [showLoginModal, setShowLoginModal] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+
+  const onClickLogin = () => {
+    if (id !== "admin" || pw !== "admin") {
+      alert("로그인에 실패하였습니다");
+      return;
+    }
+
+    setLoggedIn(true);
+    setShowLoginModal(false);
+  };
+
+  return {
+    setId,
+    setPw,
+    onClickLogin,
+    showLoginModal,
+  };
+};

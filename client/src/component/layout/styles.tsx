@@ -14,6 +14,7 @@ export const Content = styled.div`
   height: 100%;
 
   display: flex;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   overflow: scroll;
 

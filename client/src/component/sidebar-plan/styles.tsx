@@ -10,7 +10,7 @@ export const SideBarPlan = styled.div`
   padding-top: 2rem;
 
   ${Flex_Column_Start_Center}
-  animation: ${fadeIn} 1s linear;
+  animation: ${fadeIn} 0.3s linear;
 `;
 
 export const SideBarTitle = styled.div`
