@@ -17,6 +17,21 @@ export const usePlanner = () => {
   // 클릭했을 때 Overflow 면 자동으로 스크롤 및 스르륵 애니메이션 기능은 후순위
   const [isMobile, setIsMobile] = useState(false);
 
+  const [showLoginModal, setShowLoginModal] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+
+  const onClickLogin = () => {
+    if (id !== "admin" || pw !== "admin") {
+      alert("로그인에 실패하였습니다");
+      return;
+    }
+
+    setLoggedIn(true);
+    setShowLoginModal(false);
+  };
+
   useEffect(() => {
     (async () => {
       setPlanTree([await getRootPlans()]);
@@ -138,26 +153,6 @@ export const usePlanner = () => {
     hideCreatePlanModal,
     showCreatePlanModal,
     onClickCreatePlanButton,
-  };
-};
-
-export const useLogin = () => {
-  const [showLoginModal, setShowLoginModal] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
-
-  const onClickLogin = () => {
-    if (id !== "admin" || pw !== "admin") {
-      alert("로그인에 실패하였습니다");
-      return;
-    }
-
-    setLoggedIn(true);
-    setShowLoginModal(false);
-  };
-
-  return {
     setId,
     setPw,
     onClickLogin,

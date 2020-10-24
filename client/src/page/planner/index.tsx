@@ -1,11 +1,10 @@
 import React from "react";
 
 import * as S from "./styles";
-import { useLogin, usePlanner } from "./hooks";
+import { usePlanner } from "./hooks";
 import Modal from "../../component/modal";
 import Layout from "../../component/layout";
 import { useUser } from "../../context/user";
-import { getRandomHexColor } from "../../lib/color";
 import SideBarPlan from "../../component/sidebar-plan";
 
 const Planner: React.FC = () => {
@@ -22,9 +21,12 @@ const Planner: React.FC = () => {
     hideCreatePlanModal,
     showCreatePlanModal,
     onClickCreatePlanButton,
-  } = usePlanner();
 
-  const { setId, setPw, onClickLogin, showLoginModal } = useLogin();
+    setId,
+    setPw,
+    onClickLogin,
+    showLoginModal,
+  } = usePlanner();
 
   return (
     <>
@@ -36,7 +38,7 @@ const Planner: React.FC = () => {
           {planTree.map((plans, plansIdx) => (
             <S.PlanLevel key={plansIdx}>
               <S.PlanLevelMeta
-                style={{ backgroundColor: `#${getRandomHexColor()}` }}
+                style={{ backgroundColor: `#${111111 * (9 - plansIdx)}` }}
               ></S.PlanLevelMeta>
               <S.PlanBoxes>
                 {plans.map((plan, planIdx) => (
