@@ -26,6 +26,10 @@ type ServerConfig struct {
 	WriteTimeout int    `yaml:"WriteTimeout"`
 }
 
+type SecretConfig struct {
+	HashCode string `yaml:"HashCode"`
+}
+
 // Config Type
 type Config struct {
 	Database DatabaseConfig `yaml:"database"`

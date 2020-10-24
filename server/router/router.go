@@ -13,6 +13,8 @@ func Router() *gin.Engine {
 
 	api := router.Group("/api")
 
+	api.POST("/login", controller.Login)
+
 	// Goal Routes
 	api.GET("/goal", controller.GetGoals)
 	api.GET("/rootgoal", controller.GetRootGoals)
@@ -21,6 +23,9 @@ func Router() *gin.Engine {
 	api.POST("/goal", controller.CreateGoal)
 	api.PUT("/goal/:id", controller.UpdateGoal)
 	api.DELETE("/goal/:id", controller.DeleteGoal)
+
+	// User Routes
+	api.POST("/user", controller.CreateUser)
 
 	return router
 }

@@ -37,5 +37,5 @@ func init() {
 		panic(err)
 	}
 
-	DBConn.AutoMigrate(&Goal{})
+	DBConn.AutoMigrate(&Goal{}, &User{})
 }
